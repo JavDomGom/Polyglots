@@ -4,6 +4,7 @@
 The following image shows in detail the data structure of which a JPEG file is composed.
 <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/JPEG.jpg"></p>
 <br>
+To edit the content of the image we will use Radare2.
 
 ## Install Radare2
 1. Run update command to update package repositories and get latest package information.
