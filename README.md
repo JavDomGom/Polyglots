@@ -42,7 +42,10 @@ To edit the content of the image we will use Radare2.
     0x00000060  070a 080a 130a 0a13 281a 161a 2828 2828  ........(...((((
     ...
     ```
-3. Pressing `C` will enter courses mode, which will allow us to scroll through each byte of the image. Put the cursor in byte `4` of offset `0x00000000`, where initially you can find the byte `00`. Let's change this byte `00` to `01`, the smallest possible value. For this we need to press `i` to enter *insert* mode and write `01`. It should be as follows:
+
+3. From the offset `0x00000002` there are 2 bytes with value` ffe0` that correspond to an OPCODE or *marker* that is used to indicate by the following 2 bytes the number of bytes that this code fragment will occupy before encountering the next *marker*. In this case these 2 bytes have the hexadecimal value `0010`, that is, 16 in decimal, therefore the message in this section consists of the following 16 bytes: `0010 4a46 4946 0001 0101 0048 0048 0000`.
+
+4. First I am going to modify the 2 bytes `0010` that indicate the size of the message. To do this press `C` to activate the cursor and to scroll through each byte. I put the cursor on the offset `0x00000004`. I first change the byte `00` to `01`, the smallest possible non-zero positive integer value. Finally I change the byte `10` to `23`, which is the hexadecimal value that represents the ASCII character of the `#` pad.
     ```
     [0x00000000 + 5> * INSERT MODE *
     - offset - | 0 1  2 3  4 5  6 7  8 9  A B  C D  E F| 0123456789ABCDEF  comment
@@ -50,10 +53,11 @@ To edit the content of the image we will use Radare2.
     0x00000010 |0048 0000 ffdb 0043 0006 0405 0605 0406| .H.....C........
     ```
 
-4. Once this byte has been edited, the cursor automatically moves to byte `05` of offset `0x00000000`, where we initially found byte `10`. This byte represents the size of this section of bytes, in this case it has a value of `10` in hexadecimal, that's 16 in decimal, therefore this section has a total size of 16 bytes. We are going to change this value by byte `23`, which corresponds to the ASCII character `#` and it will work with a comment in the code.
+5. Once this byte has been edited, the cursor automatically moves to byte `05` of offset `0x00000000`, where we initially found byte `10`. This byte represents the size of this section of bytes, in this case it has a value of `10` in hexadecimal, that's 16 in decimal, therefore this section has a total size of 16 bytes. We are going to change this value by byte `23`, which corresponds to the ASCII character `#` and it will work with a comment in the code.
     ```
     [0x00000000 + 6> * INSERT MODE *
     - offset - | 0 1  2 3  4 5  6 7  8 9  A B  C D  E F| 0123456789ABCDEF  comment
     0x00000000 |ffd8 ffe0 0123 4a46 4946 0001 0101 0048| .....#JFIF.....H
     0x00000010 |0048 0000 ffdb 0043 0006 0405 0605 0406| .H.....C........
     ```
+The purpose of modifying these two bytes is to add as a comment in the code a series of bytes that I am going to insert in the following points.
