@@ -4,7 +4,7 @@
 The following image shows in detail the data structure of which a JPEG file is composed.
 <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/JPEG.jpg"></p>
 <br>
-To edit the content of the image we will use Radare2.
+To edit the content of the image we will use `Radare2`.
 
 ## Install Radare2
 1. Run update command to update package repositories and get latest package information.
@@ -52,4 +52,33 @@ To edit the content of the image we will use Radare2.
     0x00000000 |ffd8 ffe0 0110 4a46 4946 0001 0101 0048| ......JFIF.....H
     0x00000010 |0048 0000 ffdb 0043 0006 0405 0605 0406| .H.....C........
     ```
-The purpose of modifying these two bytes is to add as a comment in the code a series of bytes that I am going to insert in the following points.
+The purpose of modifying these two bytes is, on the one hand, to extend the length of the header an additional number of bytes and, on the other hand, to indicate that the code that I will add in the following points will be a comment, since it begins with a pad on the left.
+
+5. Note that the size of the original header was marked with a value of `0x0010` and now is `0x0123`, so I have to add bytes for the header to match in size with the new value. To calculate the number of bytes that I have to add to the header I can use the `rax2` tool, which is a help of `Radare2` and we will use it as follows. First we will calculate the bytes that `0x0010` represents:
+    ```bash
+    ~$ rax2 0x0010
+    16
+    ```
+Then I calculate the bytes that the new value `0x0123` represents:
+    ```bash
+    ~$ rax2 0x0123
+    291
+    ```
+Now I calculate the difference between `291` and` 16`, and the result is `275`:
+    ```bash
+    ~$ echo "291-16" | bc
+    275
+    ```
+
+6. Now I know we have to add an additional `275` bytes to the existing header. To do this I open `Radare2` again in write mode:
+    ```bash
+    ~$
+    ```
+I move the cursor to offset `0x00000014`.
+    ```
+    [0x00000000 0% 2968 (0x14:-1=1)]> xc
+    - offset - | 0 1  2 3  4 5  6 7  8 9  A B  C D  E F| 0123456789ABCDEF comment
+    0x00000000 |ffd8 ffe0 0123 4a46 4946 0001 0101 0048| .....#JFIF.....H
+    0x00000010 |0048 0000 ffdb 0043 0006 0405 0605 0406| .H.....C........
+    0x00000020 |0605 0607 0706 080a 100a 0a09 090a 140e| ................
+    ```
