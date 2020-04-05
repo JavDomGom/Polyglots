@@ -2,7 +2,7 @@
 
 ## JPEG data structure
 The following image shows in detail the data structure of which a JPEG file is composed.
-<p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/JPEG.jpg"></p>
+<p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/JPEG.png"></p>
 <br>
 To edit the content of the image we will use `Radare2`.
 
@@ -42,7 +42,7 @@ To edit the content of the image we will use `Radare2`.
     ...
     ```
 
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_000.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_000.gif"></p>
     <br>
 
 3. From the offset `0x00000002` there are 2 bytes with value` ffe0` that correspond to an OPCODE or *marker* that is used to indicate by the following 2 bytes the number of bytes that this code fragment will occupy before encountering the next *marker*. In this case these 2 bytes have the hexadecimal value `0010`, that is, 16 in decimal, therefore the message in this section consists of the following 16 bytes: `0010 4a46 4946 0001 0101 0048 0048 0000`.
@@ -54,7 +54,7 @@ To edit the content of the image we will use `Radare2`.
     0x00000000 |ffd8 ffe0 0023 4a46 4946 0001 0101 0048| .....#JFIF.....H
     0x00000010 |0048 0000 ffdb 0043 0006 0405 0605 0406| .H.....C........
     ```
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_001.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_001.gif"></p>
     <br>
 
     The purpose of modifying this byte is, on the one hand, to extend the length of the header an additional number of bytes and, on the other hand, to indicate that the code below to fill the specified size is a comment.
@@ -64,7 +64,7 @@ To edit the content of the image we will use `Radare2`.
     ~$ rax2 0x0010
     16
     ```
-    Then I calculate the bytes that the new value `0x0123` represents:
+    Then I calculate the bytes that the new value `0x0023` represents:
     ```bash
     ~$ rax2 0x0023
     35
@@ -74,7 +74,7 @@ To edit the content of the image we will use `Radare2`.
     ~$ echo "35-16" | bc
     19
     ```
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_002.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_002.gif"></p>
     <br>
 
 6. Now I know we have to add an additional `19` bytes to the existing header. To do this I open `Radare2` again in write mode:
@@ -86,7 +86,7 @@ To edit the content of the image we will use `Radare2`.
     [0x00000000]> weN 0x14 19
     ```
     Where `0x14` (row `0x10`, column `4`, value `ff`) is the offset or address where I will insert the new bytes, and `19` is the number of bytes to insert.
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_003.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_003.gif"></p>
     <br>
 
 7. Enter in visual mode again with `V` and pressing enter.
@@ -103,14 +103,14 @@ To edit the content of the image we will use `Radare2`.
     ...
     ```
     As you can see, hems successfully added 19 bytes with value `00` from offset `0x14` to offset `0x26` (row `0x20`, column `6`, value `00`), shifting all other bytes forward.
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_004.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_004.gif"></p>
     <br>
 
 8. Now is the time to overwrite some of the bytes that I have added by pressing `i` to enter INSERT mode. For example, enter a carriage return (CR) by `0d` at offset `0x12` and line feed (LF) by `0a` at offset `0x13`:
     ```
     [0x00000000 + 20> * INSERT MODE *
     - offset - | 0 1  2 3  4 5  6 7  8 9  A B  C D  E F| 0123456789ABCDEF  comment
-    0x00000000 |ffd8 ffe0 0123 4a46 4946 0001 0101 0048| .....#JFIF.....H
+    0x00000000 |ffd8 ffe0 0023 4a46 4946 0001 0101 0048| .....#JFIF.....H
     0x00000010 |0048 0d0a 0000 0000 0000 0000 0000 0000| .H..............
     ...
     ```
@@ -128,11 +128,11 @@ To edit the content of the image we will use `Radare2`.
     ...
     ```
 I change the column again by pressing the tabulator and stay again in the column of the bytes. To exit press `Esc` twice, type `q` (quit), retype `q` again and press enter.
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_006.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_006.gif"></p>
     <br>
 
 10. Now I open the photo to see that it is still a normal photo. I can double click on the file to open it.
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_007.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_007.gif"></p>
     <br>
 
 As you can see, there is no difference, even though I have entered a number of bytes that were not there before.
@@ -148,7 +148,7 @@ As you can see, there is no difference, even though I have entered a number of b
     -rw-rw-r-- 1 jdg jdg   6785 abr  4 19:33 README.md
     -rw-rw-r-- 1 jdg jdg  34286 abr  4 19:36 dog.jpg
     ```
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_008.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_008.gif"></p>
     <br>
 
 Here is the question of this whole matter. We have run the `ls` program with the` -lrt` flags and have finally run the `exit` statement to force an exit from the program. The conclusion is that by using this information hiding technique I could run a program that would perform some unwanted action instead of executing these simple commands, on my computer or on other people's computers.
