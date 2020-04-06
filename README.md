@@ -137,7 +137,7 @@ I change the column again by pressing the tabulator and stay again in the column
 
 As you can see, there is no difference, even though I have entered a number of bytes that were not there before.
 
-11. It is the moment to open the photo with a different program from the one we have configured by default to view photographs, for example with `cat` and passing the output to the executable `sh`, `bash` or the *shell* program of your choice.
+11. It's the moment to open the photo with a different program from the one we have configured by default to view photographs, for example with `cat` and passing the output to the executable `sh`, `bash` or the *shell* program of your choice.
     ```
     ~$ cat dog.jpg | sh
     : not found#JFIFHH
