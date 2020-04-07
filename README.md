@@ -115,7 +115,7 @@ To edit the content of the image we will use `Radare2`.
     ...
     ```
     **Note**: *The concepts of line feed (`LF`) and carriage return (`CR`) are closely associated, and can be considered either separately or together. Although the design of a machine (typewriter or printer) must consider them separately, the abstract logic of software can combine them together as one event. This is why a newline in character encoding can be defined as `LF` and `CR` combined into one (commonly called `CR`+`LF` or `CRLF`).*
-    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/img/blob/master/polyglots_005.gif"></p>
+    <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/polyglots_005.gif"></p>
     <br>
 
 9. The next bytes from offset `0x14` are bytes that I can replace by adding text. For example, I press the tab to change columns and stay where the ASCII representation of the bytes is displayed. Now write ASCII characters directly, not bytes, for example `ls -lrt; exit;`.
@@ -152,3 +152,6 @@ As you can see, there is no difference, even though I have entered a number of b
     <br>
 
 Here is the question of this whole matter. We have run the `ls` program with the` -lrt` flags and have finally run the `exit` statement to force an exit from the program. The conclusion is that by using this information hiding technique I could run a program that would perform some unwanted action instead of executing these simple commands, on my computer or on other people's computers.
+
+## Acknowledgment
+My thanks to [Dr. Alfonso Muñoz](https://twitter.com/mindcrypt) for the keynote talk from [RootedCON](https://www.rootedcon.com/) and [documentation](https://github.com/mindcrypt/polyglot), and [Abraham Pasamar](https://twitter.com/apasamar) for [this](https://www.youtube.com/watch?v=0S61uzx-Efk&t=) explanatory video.
