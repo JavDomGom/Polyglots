@@ -4,6 +4,7 @@
 The following image shows in detail the data structure of which a JPEG file is composed.
 <p align="center"><img src="https://github.com/JavierDominguezGomez/Polyglots/blob/master/img/JPEG.png"></p>
 <br>
+
 To edit the content of the image we will use `Radare2`.
 
 ## Install Radare2
@@ -155,3 +156,6 @@ Here is the question of this whole matter. We have run the `ls` program with the
 
 ## Acknowledgment
 My thanks to [Dr. Alfonso Muñoz](https://twitter.com/mindcrypt) for the keynote talk from [RootedCON](https://www.rootedcon.com/) and [documentation](https://github.com/mindcrypt/polyglot), and [Abraham Pasamar](https://twitter.com/apasamar) for [this](https://www.youtube.com/watch?v=0S61uzx-Efk&t=) explanatory video.
+
+## Links
+* [Enrique Soriano](https://twitter.com/e__soriano): https://sysfatal.github.io/polyglottar.html
