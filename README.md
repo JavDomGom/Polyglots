@@ -46,7 +46,7 @@ To edit the content of the image we will use `Radare2`.
     <p align="center"><img src="img/polyglots_000.gif"></p>
     <br>
 
-3. From the offset `0x02` there are 2 bytes with value` ffe0` that correspond to an OPCODE or *magic number* that is used to indicate by the following 2 bytes the number of bytes that this code fragment will occupy before encountering the next *magic number*. In this case these 2 bytes have the hexadecimal value `0010`, that is, 16 in decimal, therefore the message in this section consists of the following 16 bytes: `0010 4a46 4946 0001 0101 0048 0048 0000`.
+3. From the offset `0x02` there are 2 bytes with value` ffe0` that correspond to a *magic number* that is used to indicate by the following 2 bytes the number of bytes that this code fragment will occupy before encountering the next *magic number*. In this case these 2 bytes have the hexadecimal value `0010`, that is, 16 in decimal, therefore the message in this section consists of the following 16 bytes: `0010 4a46 4946 0001 0101 0048 0048 0000`.
 
 4. First modify this 2 bytes `0010` that indicate the size of the message. To do this press `C` to activate the cursor and to scroll through each byte. You need to press `i` to activate insert mode. Put the cursor on the offset `0x05`. Change this byte from `10` to `23`, which is the hexadecimal value that represents the ASCII character for `#` pad.
     ```
@@ -155,8 +155,8 @@ As you can see, there is no difference, even though I have entered a number of b
 Here is the question of this whole matter. We have run the `ls` program with the` -lrt` flags and have finally run the `exit` statement to force an exit from the program. The conclusion is that by using this information hiding technique I could run a program that would perform some unwanted action instead of executing these simple commands, on my computer or on other people's computers.
 
 ## Acknowledgment
-My thanks to [Dr. Alfonso Muñoz](https://twitter.com/mindcrypt) for the keynote talk from [RootedCON](https://www.rootedcon.com/) and [documentation](https://github.com/mindcrypt/polyglot), and [Abraham Pasamar](https://twitter.com/apasamar) for [this](https://www.youtube.com/watch?v=0S61uzx-Efk&t=) explanatory video.
+My thanks to Dr. Alfonso Muñoz for the keynote talk from [RootedCON](https://www.rootedcon.com/) and [documentation](https://github.com/mindcrypt/polyglot), and [Abraham Pasamar](https://twitter.com/apasamar) for [this](https://www.youtube.com/watch?v=0S61uzx-Efk&t=) explanatory video.
 
 ## Links of interest
-* [Alfonso Muñoz](https://github.com/mindcrypt/bipolar)
-* [Enrique Soriano](https://twitter.com/e__soriano): https://sysfatal.github.io/polyglottar.html
+* [Alfonso Muñoz](https://twitter.com/mindcrypt): [Bipolar](https://github.com/mindcrypt/bipolar)
+* [Enrique Soriano](https://twitter.com/e__soriano): [Polyglottar](https://sysfatal.github.io/polyglottar.html)

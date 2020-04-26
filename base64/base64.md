@@ -43,7 +43,7 @@
     ~$ rax2 0x0123
     291
     ```
-    Now I calculate the difference between `35` and` 16`, and the result is `8`:
+    Now I calculate the difference between `35` and` 16`, and the result is `275`:
     ```bash
     ~$ echo "291-16" | bc
     275

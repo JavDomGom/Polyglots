@@ -1,0 +1,16 @@
+#!/bin/bash
+
+x="["
+y="="
+z="]"
+e=0
+clear
+printf "\n\tFormateando unidad de disco ...\n\n"
+while [ ${#y} -le 51 ]
+do
+	printf " %s%-50.50s%s  %4d%%\r" $x "${y}" $z $e
+	y="${y}="
+	echo "after 300" | tclsh
+	let e+=2
+done
+printf "\n\n"
