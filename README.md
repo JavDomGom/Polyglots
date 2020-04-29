@@ -119,7 +119,7 @@ To edit the content of the image we will use `Radare2`.
     <p align="center"><img src="img/polyglots_005.gif"></p>
     <br>
 
-9. The next bytes from offset `0x14` are bytes that I can replace by adding text. For example, I press the tab to change columns and stay where the ASCII representation of the bytes is displayed. Now write ASCII characters directly, not bytes, for example `ls -lrt; exit;`.
+9. The next bytes from offset `0x14` are bytes that I can replace by adding text. For example, I press the tab to change columns and stay where the ASCII representation of the bytes is displayed. Now write ASCII characters directly, not bytes, for example `ls -lrt;exit;`.
     ```
     [0x00000000 + 33> * INSERT MODE *
     - offset -   0 1  2 3  4 5  6 7  8 9  A B  C D  E F |0123456789ABCDEF| comment

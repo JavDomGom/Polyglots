@@ -121,7 +121,7 @@ Para editar el contenido de esta estructura de datos usaremos la herramienta `ra
     <p align="center"><img src="img/polyglots_005.gif"></p>
     <br>
 
-9. Los siguientes bytes a partir del *offset* `0x14` son bytes que podemos reemplazar agregando texto. Por ejemplo, presionamos el tabulador para cambiar de columna y posicionarnos donde se muestra la representación ASCII de los bytes. Ahora podemos escribir caracteres ASCII directamente, no bytes, por ejemplo `ls -lrt; salida;`.
+9. Los siguientes bytes a partir del *offset* `0x14` son bytes que podemos reemplazar agregando texto. Por ejemplo, presionamos el tabulador para cambiar de columna y posicionarnos donde se muestra la representación ASCII de los bytes. Ahora podemos escribir caracteres ASCII directamente, no bytes, por ejemplo `ls -lrt;exit;`.
     ```
     [0x00000000 + 68> * INSERT MODE *
     - offset -   0 1  2 3  4 5  6 7  8 9  A B  C D  E F |0123456789ABCDEF| comment
