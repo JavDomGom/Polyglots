@@ -158,6 +158,9 @@ Como se puede ver, no hay diferencia, a pesar de que hemos añadido una cantidad
 
 He aquí la cuestión de todo este asunto. Hemos ejecutado el programa `ls` con las opciones `-lrt` y finalmente la instrucción `exit` para forzar una salida del programa. La conclusión es que al usar esta técnica de ocultación de información podría ejecutar un programa que realizaría alguna acción no deseada en lugar de ejecutar estos comandos shell simples, y podríamos hacerlo en nuestra computadora o en las de otras personas.
 
+## Ejecución de scripts
+En la carpeta `ShellScript` de este repositorio encontrarás una versión de la foto original llamada `dog_shellscript.jpg` en la que he añadido la ejecución de un script `Bash` al que he llamado `.8.z]` sin extensión, oculto y con un nombre que ayuda a pasar un poco más desapercibido entre los carácteres ASCII. Lo único que hace este script es imprimir un mensaje que dice "*Formatting disk drive ...*" y mostrar una barra de progreso (fake), en realidad no hace nada malo, solo es un ejemplo.
+
 ## Agradecimientos
 Gracias al Dr. Alfonso Muñoz por la charla de la [RootedCON](https://www.rootedcon.com/) y el repo con [información](https://github.com/mindcrypt/polyglot) al respecto, y a [Abraham Pasamar](https://twitter.com/apasamar) por [este](https://www.youtube.com/watch?v=0S61uzx-Efk&t=) vídeo tan didáctico.
 

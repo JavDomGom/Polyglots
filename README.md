@@ -154,6 +154,12 @@ As you can see, there is no difference, even though I have entered a number of b
 
 Here is the question of this whole matter. We have run the `ls` program with the` -lrt` flags and have finally run the `exit` statement to force an exit from the program. The conclusion is that by using this information hiding technique I could run a program that would perform some unwanted action instead of executing these simple commands, on my computer or on other people's computers.
 
+## Ejecución de scripts
+En la carpeta `ShellScript` de este repositorio encontrarás una versión de la foto original llamada `dog_shellscript.jpg` en la que he añadido la ejecución de un script `Bash` al que he llamado `.8.z]` sin extensión, oculto y con un nombre que ayuda a pasar un poco más desapercibido entre los carácteres ASCII. Lo único que hace este script es imprimir un mensaje que dice "*Formatting disk drive ...*" y mostrar una barra de progreso (fake), en realidad no hace nada malo, solo es un ejemplo.
+
+## Script execution
+In the `ShellScript` folder of this repository you will find a version of the original photo called `dog_shellscript.jpg` in which I have added the execution of a `Bash` script to which I have called `.8.z]` without extension, hidden file and with a name that helps to pass a little more unnoticed among the ASCII characters. The only thing this script does is print a message that says "*Formatting disk drive ...*" and show a progress bar (fake), it doesn't actually do anything wrong, it's just an example.
+
 ## Acknowledgment
 My thanks to Dr. Alfonso Muñoz for the keynote talk from [RootedCON](https://www.rootedcon.com/) and [documentation](https://github.com/mindcrypt/polyglot), and [Abraham Pasamar](https://twitter.com/apasamar) for [this](https://www.youtube.com/watch?v=0S61uzx-Efk&t=) explanatory video.
 

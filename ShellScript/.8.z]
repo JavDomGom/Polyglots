@@ -5,7 +5,7 @@ y="="
 z="]"
 e=0
 clear
-printf "\n\tFormateando unidad de disco ...\n\n"
+printf "\n\tFormatting disk drive ...\n\n"
 while [ ${#y} -le 51 ]
 do
 	printf " %s%-50.50s%s  %4d%%\r" $x "${y}" $z $e
